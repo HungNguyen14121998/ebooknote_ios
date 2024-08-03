@@ -1,0 +1,20 @@
+[
+    {
+        "id": "",
+        "name": "Atomic Habbits",
+        "author": "James Clear",
+        "numberOfPages": 383,
+        "photo": "",
+        "createDate": 1721908201,
+        "histories": [
+            {
+                "id": "",
+                "content": "",
+                "fromPage": 0,
+                "toPage": 30,
+                "tag": "Chapter 1",
+                "createDate": 1721908438
+            },
+        ]
+    }
+]
