@@ -22,7 +22,7 @@ This app is for readers to read, take notes, summary content and collect informa
 1. Clone the repository:
 
     ```sh
-    git clone [[https://github.com/username/MyiOSApp.git](https://github.com/HungNguyen14121998/ebooknote_ios.git)](https://github.com/HungNguyen14121998/ebooknote_ios.git)
+    git clone https://github.com/HungNguyen14121998/ebooknote_ios.git
     ```
 
 2. Navigate to the project directory:
