@@ -90,9 +90,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             newBook.author = book.author
             newBook.numberOfPages = Int16(book.numberOfPages)
             
-            APIClient.downloadImage(path: book.photo) { image, error in
-                newBook.photo = image?.pngData()
-                appDelegate.saveContext()
+            if let path = book.photo {
+                APIClient.downloadImage(path: path) { image, error in
+                    guard let image = image else { return }
+                    
+                    newBook.photo = image.pngData()
+                    appDelegate.saveContext()
+                }
             }
             
             appDelegate.saveContext()

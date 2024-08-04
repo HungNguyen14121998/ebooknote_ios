@@ -14,7 +14,7 @@ struct BooksResponseModel: Codable {
 struct BookResponseModel: Codable {
     let name: String
     let author: String
-    let photo: String
+    let photo: String?
     let numberOfPages: Int
     let createDate: Double
     let histories: [HistoryResponseModel]
