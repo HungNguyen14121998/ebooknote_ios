@@ -8,20 +8,27 @@
 import UIKit
 
 struct Constant {
-    static let kHomeHeaderCollectionViewCell = "HomeHeaderCollectionViewCell"
-    static let kHomeHeaderView = "HomeHeaderView"
-    static let kGraphHeaderView = "GraphHeaderView"
-    static let kHistoryTableViewCell = "HistoryTableViewCell"
+
+    // Idetifier Segue
     static let kGoToHistory = "goToHistory"
-    static let kGraphTableViewCell = "GraphTableViewCell"
-    static let kBookHeaderCollectionReusableView = "BookHeaderCollectionReusableView"
-    static let kFooterHeaderCollectionReusableView = "FooterHeaderCollectionReusableView"
     static let kGoToUpDateCurrentBook = "updateCurrentBook"
-    static let kBookCollectionViewCell = "BookCollectionViewCell"
-    static let kHomeTableViewCell = "HomeTableViewCell"
     static let kToListHistory = "toListHistory"
     static let kGoToHome = "goToHome"
     
+    // Idetifier Header
+    static let kHomeHeaderView = "HomeHeaderView"
+    static let kGraphHeaderView = "GraphHeaderView"
+    static let kBookHeaderCollectionReusableView = "BookHeaderCollectionReusableView"
+    static let kFooterHeaderCollectionReusableView = "FooterHeaderCollectionReusableView"
+    
+    // Idetifier Cell
+    static let kHomeHeaderCollectionViewCell = "HomeHeaderCollectionViewCell"
+    static let kHistoryTableViewCell = "HistoryTableViewCell"
+    static let kGraphTableViewCell = "GraphTableViewCell"
+    static let kBookCollectionViewCell = "BookCollectionViewCell"
+    static let kHomeTableViewCell = "HomeTableViewCell"
+    
+    // API Header
     static let applicationJson = "application/json"
     static let httpHeaderAccept = "Accept"
     static let httpHeaderContentType = "Content-Type"

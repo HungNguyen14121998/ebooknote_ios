@@ -27,7 +27,6 @@ class BookHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @IBAction func updateAction(_ sender: UIButton) {
-        print("update current book")
         delegate?.didTapUpdateCurrentBookAction()
     }
     

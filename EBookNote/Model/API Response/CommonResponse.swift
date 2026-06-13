@@ -9,4 +9,5 @@ import Foundation
 
 struct CommonResponse: Codable {
     let status: String
+    let message: String
 }

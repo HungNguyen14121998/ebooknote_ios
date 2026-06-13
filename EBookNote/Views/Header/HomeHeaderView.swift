@@ -20,6 +20,7 @@ class HomeHeaderView: UIView, UICollectionViewDataSource, UICollectionViewDelega
     let dates: [Date] = Date.getWeekday
     var indexSelected: Int = -1 // init index selected
     
+    // TODO: Make delegate
     var didTapCell: ((Date) -> Void)?
     
     override init(frame: CGRect) {

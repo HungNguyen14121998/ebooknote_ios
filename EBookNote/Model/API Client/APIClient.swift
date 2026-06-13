@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum ResultCode {
+    case none
+    case success
+    case failure
+}
+
 class APIClient {
     
     struct Auth {
@@ -16,25 +22,36 @@ class APIClient {
     }
     
     enum Endpoints {
-        static let base = "https://ebooknote-be-1.onrender.com/api/v1/"
+//        static let base = "https://ebooknote-be-1.onrender.com/api/v1/"
+        static let base = "http://localhost:3000/api/v1/"
         
+        // Auth
         case login
+        case autoLogin
         case register
         case logout
+        
+        // Book
         case getBooks
         case createBook
         case updateBook
         case deleteBook
+        
+        // History
         case getHistory
         case createHistory
         case updateHistory
         case deleteHistory
+        
+        // Image
         case uploadImage
         
         var stringValue: String {
             switch self {
             case .login:
                 return Endpoints.base + "users/login"
+            case .autoLogin:
+                return Endpoints.base + "users/auto-login"
             case .register:
                 return Endpoints.base + "users/register"
             case .logout:
@@ -78,6 +95,9 @@ class APIClient {
                     Auth.userId = responseObject.userId
                     print("token: \(Auth.accessToken)")
                     print("userId: \(Auth.userId)")
+                    // save token to user default
+                    let dataStoreAccessToken = DataStoreManager(key: UserDefaultsKey.kAccessToken)
+                    dataStoreAccessToken.set(responseObject.token as Any)
                     DispatchQueue.main.async {
                         completion(responseObject, nil)
                     }
@@ -93,6 +113,54 @@ class APIClient {
                     }
                 } else { // 500
                     let error = NSError(domain: "Server response error!", code: 400)
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    class func autoLogin(accessToken: String, completion: @escaping (LoginResponseModel?, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.autoLogin.url)
+        request.httpMethod = "POST"
+        request.addValue(Constant.applicationJson, forHTTPHeaderField: Constant.httpHeaderAccept)
+        request.addValue(Constant.applicationJson, forHTTPHeaderField: Constant.httpHeaderContentType)
+        request.setValue( "Bearer \(accessToken)", forHTTPHeaderField: Constant.httpHeaderAuthorization)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let httpResponse = response as? HTTPURLResponse
+                if httpResponse?.statusCode == 200 {
+                    let responseObject = try decoder.decode(LoginResponseModel.self, from: data)
+                    Auth.accessToken = responseObject.token
+                    Auth.userId = responseObject.userId
+                    print("token: \(Auth.accessToken)")
+                    print("userId: \(Auth.userId)")
+                    // save token to user default
+                    let dataStoreAccessToken = DataStoreManager(key: UserDefaultsKey.kAccessToken)
+                    dataStoreAccessToken.set(responseObject.token as Any)
+                    DispatchQueue.main.async {
+                        completion(responseObject, nil)
+                    }
+                } else if httpResponse?.statusCode == 401 { // 401
+                    let error = NSError(domain: "Token does no longer exist", code: 401)
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                } else { // 500
+                    let error = NSError(domain: "Server response error!", code: 500)
                     DispatchQueue.main.async {
                         completion(nil, error)
                     }

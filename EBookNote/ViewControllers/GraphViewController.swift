@@ -66,7 +66,7 @@ class GraphViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       print("didSelectRowAt")
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

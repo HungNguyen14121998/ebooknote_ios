@@ -7,12 +7,10 @@
 
 import UIKit
 
-let kUserDefaultGoals = "goalsOfWeek"
-
 class SetGoalsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var numberOfPagesTextField: UITextField!
-    private var dataStore = DataStoreManager(key: kUserDefaultGoals)
+    private var dataStore = DataStoreManager(key: UserDefaultsKey.kGoalsOfWeek)
 
     override func viewDidLoad() {
         super.viewDidLoad()

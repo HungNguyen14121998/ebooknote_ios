@@ -100,16 +100,15 @@ class BookViewController: UIViewController, UICollectionViewDataSource, UICollec
             let footerView = bookCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constant.kFooterHeaderCollectionReusableView, for: indexPath)
             return footerView
         default:
-            print("kind default")
+            break
         }
         
-        // footer
-        return bookCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constant.kFooterHeaderCollectionReusableView, for: indexPath)
+        return UICollectionReusableView()
     }
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelectItemAt")
+        
     }
     
     // MARK: - BookHeaderCollectionReusableViewDelegate

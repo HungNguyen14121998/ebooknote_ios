@@ -40,13 +40,14 @@ class ListHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     private func setupTableView() {
+        listHistoryTableView.sectionHeaderTopPadding = 0
         listHistoryTableView.dataSource = self
         listHistoryTableView.delegate = self
         listHistoryTableView.register(UINib(nibName: Constant.kHistoryTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.kHistoryTableViewCell)
         
         refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
         listHistoryTableView.refreshControl = refreshControl
-        listHistoryTableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        listHistoryTableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
     }
     
     private func loadHistoryData() {
@@ -90,7 +91,6 @@ class ListHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       print("didSelectRowAt")
         performSegue(withIdentifier: Constant.kGoToHistory, sender: nil)
     }
     

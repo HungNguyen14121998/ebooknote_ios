@@ -44,6 +44,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     @IBAction func pressLoginButton(_ sender: UIButton) {
         showLoading()
         if let username = usernameTextField.text, let password = passwordTextField.text, username != "", password != "" {
@@ -64,9 +71,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        guard let response = response else { return }
-        
-        performSegue(withIdentifier: Constant.kGoToHome, sender: nil)
+        if let response = response {
+            performSegue(withIdentifier: Constant.kGoToHome, sender: nil)
+        }
     }
     
     private func setupTextField(_ textField: EBTextField) {

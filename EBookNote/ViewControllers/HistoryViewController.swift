@@ -192,7 +192,6 @@ class HistoryViewController: UIViewController, UITextViewDelegate {
         }
         
         appDelegate.saveContext()
-        print("Save history success")
     }
     
     fileprivate func inputTagHistory() {
@@ -296,7 +295,6 @@ class HistoryViewController: UIViewController, UITextViewDelegate {
         
         if let history = history {
             context.delete(history)
-            print("Delete history success")
         }
     }
     

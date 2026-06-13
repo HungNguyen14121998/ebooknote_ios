@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XVC-QI-jIC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="EBookNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="EBookNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +120,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071.2" y="-34.632683658170919"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="tpZ-hm-SQY">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ip2-cv-wgE" customClass="SplashViewController" customModule="EBookNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WYO-61-nbh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ebook" translatesAutoresizingMaskIntoConstraints="NO" id="Fiz-h5-3Ns">
+                                <rect key="frame" x="123.5" y="279.5" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fiz-h5-3Ns" secondAttribute="height" multiplier="1:1" id="C62-U2-bmU"/>
+                                    <constraint firstAttribute="height" constant="128" id="I2Q-VG-9X8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f76-gV-EvE"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fiz-h5-3Ns" firstAttribute="centerY" secondItem="f76-gV-EvE" secondAttribute="centerY" id="YMP-SP-8th"/>
+                            <constraint firstItem="Fiz-h5-3Ns" firstAttribute="centerX" secondItem="f76-gV-EvE" secondAttribute="centerX" id="wDz-rB-0kO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSn-4h-bX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="762"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="sXB-wH-svK">
@@ -557,7 +585,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICb-2H-1OL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3673" y="43"/>
+            <point key="canvasLocation" x="3710" y="-54"/>
         </scene>
         <!--Graph-->
         <scene sceneID="leK-4d-7cK">
@@ -627,7 +655,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mqr-yy-JkK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3673" y="-625"/>
+            <point key="canvasLocation" x="3735" y="-1284"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="kZ5-vU-SFG">
@@ -737,7 +765,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABK-Fp-Ksb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4568.8000000000002" y="-625.63718140929541"/>
+            <point key="canvasLocation" x="4942" y="-987"/>
         </scene>
         <!--Menu-->
         <scene sceneID="OBE-Ff-n29">
@@ -831,7 +859,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2833" y="1056"/>
+            <point key="canvasLocation" x="2833" y="1366"/>
         </scene>
         <!--Set goals-->
         <scene sceneID="ges-3w-8hR">
@@ -887,7 +915,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0Q-rU-rhO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3689" y="1056"/>
+            <point key="canvasLocation" x="3758" y="1366"/>
         </scene>
         <!--Home-->
         <scene sceneID="377-hB-lPR">
@@ -924,7 +952,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
         <!--Main Tabbar View Controller-->
         <scene sceneID="7fY-5q-8J6">
             <objects>
-                <tabBarController id="zn4-kB-bxE" customClass="MainTabbarViewController" customModule="EBookNote" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabbarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zn4-kB-bxE" customClass="MainTabbarViewController" customModule="EBookNote" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" style="browser" id="Zg7-ZX-xL6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hB8-a7-AV7">
                             <connections>
@@ -980,6 +1008,7 @@ LET’S TAKE NOTES ON WHAT YOU READ</string>
         <image name="camera" width="24" height="24"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="102"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="ic_ebook" width="512" height="512"/>
         <image name="image-book-placeholder" width="160" height="200"/>
         <image name="library" width="24" height="24"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

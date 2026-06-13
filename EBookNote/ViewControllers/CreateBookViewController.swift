@@ -106,18 +106,46 @@ class CreateBookViewController: UIViewController, UIImagePickerControllerDelegat
     private func saveBook() {
         view.endEditing(true)
         
-        saveToServer()
+        postToServer()
     }
     
-    private func saveToServer() {
+    /// Method post book data to back-end
+    private func postToServer() {
         
+        // start loading
         showLoading()
-        let bookRequest = BookRequestModel(name: bookNameTextField.text!,
-                                    author: authorNameTextField.text!,
-                                    numberOfPages: Int(Int16(getNumberOfPage())),
-                                    createDate: Date().timeIntervalSince1970)
         
-        APIClient.createBook(book: bookRequest, completion: handleToCreateBookResponse(response:error:))
+        // validation book name
+        if bookNameTextField.text == nil {
+            warningInput(with: "Input book name")
+        }
+        
+        // validation author name
+        if authorNameTextField.text == nil {
+            warningInput(with: "Input author name")
+        }
+        
+        // declare book name
+        // declare author name
+        if let bookName = bookNameTextField.text,
+           let authorName = authorNameTextField.text
+        {
+            // prepare request
+            let bookRequest = BookRequestModel(name: bookName,
+                                               author: authorName,
+                                               numberOfPages: getNumberOfPage(),
+                                               createDate: Date().timeIntervalSince1970)
+            // call api
+            APIClient.createBook(book: bookRequest, completion: handleToCreateBookResponse(response:error:))
+        }
+    }
+    
+    /// Method hide loading and show alert warning user with message
+    /// - Parameter errorMessage: message warning user when validation failure
+    private func warningInput(with errorMessage: String) {
+        hideLoading()
+        showAlertError(message: errorMessage)
+        return
     }
     
     private func handleToCreateBookResponse(response: CommonResponse?, error: Error?) {
@@ -165,7 +193,6 @@ class CreateBookViewController: UIViewController, UIImagePickerControllerDelegat
         book.numberOfPages = Int16(getNumberOfPage())
         
         appDelegate.saveContext()
-        print("Save book success")
     }
     
     private func getNumberOfPage() -> Int {

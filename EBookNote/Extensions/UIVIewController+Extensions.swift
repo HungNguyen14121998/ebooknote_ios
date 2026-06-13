@@ -27,7 +27,18 @@ extension UIViewController {
         let okAction = UIAlertAction(title: "Logout", style: .destructive) {_ in 
             APIClient.Auth.accessToken = ""
             APIClient.Auth.userId = ""
-            self.navigationController?.popToRootViewController(animated: true)
+            let dataStoreAccessToken = DataStoreManager(key: UserDefaultsKey.kAccessToken)
+            dataStoreAccessToken.set("" as Any)
+            
+            // go to Login
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = scene.delegate as? SceneDelegate {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let myViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                let navController = UINavigationController(rootViewController: myViewController)
+                sceneDelegate.window?.rootViewController = navController
+                sceneDelegate.window?.makeKeyAndVisible()
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         

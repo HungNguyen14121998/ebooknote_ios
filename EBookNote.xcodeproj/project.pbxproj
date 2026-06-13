@@ -47,6 +47,8 @@
 		E80ECB472C4ACB9800CC5D6C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ECB1F2C4ACB9800CC5D6C /* MenuViewController.swift */; };
 		E80ECB482C4ACB9800CC5D6C /* SetGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ECB202C4ACB9800CC5D6C /* SetGoalsViewController.swift */; };
 		E80ECB492C4ACB9800CC5D6C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ECB212C4ACB9800CC5D6C /* RegisterViewController.swift */; };
+		E86E4D6E2DAD419000708FD6 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4D6D2DAD419000708FD6 /* UserDefaultsKey.swift */; };
+		E86E4D702DAD582F00708FD6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4D6F2DAD582F00708FD6 /* SplashViewController.swift */; };
 		E87BFFF12C593FAF002A2091 /* BookRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BFFF02C593FAF002A2091 /* BookRequestModel.swift */; };
 		E87BFFF32C594094002A2091 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BFFF22C594094002A2091 /* CommonResponse.swift */; };
 		E87BFFF52C5A618B002A2091 /* HistoryRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BFFF42C5A618B002A2091 /* HistoryRequestModel.swift */; };
@@ -107,6 +109,8 @@
 		E80ECB1F2C4ACB9800CC5D6C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E80ECB202C4ACB9800CC5D6C /* SetGoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGoalsViewController.swift; sourceTree = "<group>"; };
 		E80ECB212C4ACB9800CC5D6C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E86E4D6D2DAD419000708FD6 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		E86E4D6F2DAD582F00708FD6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E87BFFF02C593FAF002A2091 /* BookRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRequestModel.swift; sourceTree = "<group>"; };
 		E87BFFF22C594094002A2091 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		E87BFFF42C5A618B002A2091 /* HistoryRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRequestModel.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				E80ECB102C4ACB9800CC5D6C /* Storyboards */,
 				E80ECB152C4ACB9800CC5D6C /* ViewControllers */,
 				E80ECAF72C4ACB9800CC5D6C /* Views */,
+				E86E4D6C2DAD414800708FD6 /* Utils */,
 				E80ECAF02C4ACB9800CC5D6C /* Assets.xcassets */,
 				E80ECAE92C4ACB5000CC5D6C /* Info.plist */,
 			);
@@ -260,8 +265,17 @@
 				E80ECB1A2C4ACB9800CC5D6C /* ListHistoryViewController.swift */,
 				E80ECB182C4ACB9800CC5D6C /* HistoryViewController.swift */,
 				E80ECB202C4ACB9800CC5D6C /* SetGoalsViewController.swift */,
+				E86E4D6F2DAD582F00708FD6 /* SplashViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E86E4D6C2DAD414800708FD6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E86E4D6D2DAD419000708FD6 /* UserDefaultsKey.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E8D5EF862C53AB9C006F59F0 /* API Client */ = {
@@ -410,8 +424,10 @@
 				E80ECB392C4ACB9800CC5D6C /* UIVIew+Extensions.swift in Sources */,
 				E8D5EF8A2C53ABC9006F59F0 /* APIClient.swift in Sources */,
 				E80ECB3B2C4ACB9800CC5D6C /* UIResponder+Extensions.swift in Sources */,
+				E86E4D6E2DAD419000708FD6 /* UserDefaultsKey.swift in Sources */,
 				E80ECADB2C4ACB4F00CC5D6C /* SceneDelegate.swift in Sources */,
 				E80ECB482C4ACB9800CC5D6C /* SetGoalsViewController.swift in Sources */,
+				E86E4D702DAD582F00708FD6 /* SplashViewController.swift in Sources */,
 				E80ECB382C4ACB9800CC5D6C /* UIVIewController+Extensions.swift in Sources */,
 				E80ECB292C4ACB9800CC5D6C /* GraphTableViewCell.swift in Sources */,
 				E80ECB442C4ACB9800CC5D6C /* BookViewController.swift in Sources */,
@@ -571,9 +587,12 @@
 				DEVELOPMENT_TEAM = X63Z3K3294;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EBookNote/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access camera permission";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access photo libray additions permission";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access photo library usage permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -602,10 +621,14 @@
 				DEVELOPMENT_TEAM = X63Z3K3294;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EBookNote/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access camera permission";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access photo libray additions permission";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access photo library usage permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

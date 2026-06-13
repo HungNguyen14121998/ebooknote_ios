@@ -32,12 +32,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func setupTableView() {
+//        homeTableView.sectionHeaderTopPadding = 0
         homeTableView.dataSource = self
         homeTableView.delegate = self
         homeTableView.register(UINib(nibName: Constant.kHomeTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.kHomeTableViewCell)
 
         refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
         homeTableView.refreshControl = refreshControl
+        homeTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
     }
     
     private func getDataFromAPI() {
@@ -74,7 +76,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             context.reset()
         } catch {
-            print (error)
+            showAlertError(message: error.localizedDescription)
         }
     }
     
@@ -164,9 +166,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         showLoading()
         dateSelected = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
         loadHomeData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.refreshControl.endRefreshing()
-            self.hideLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.refreshControl.endRefreshing()
+            weakSelf.hideLoading()
         }
     }
     
@@ -187,7 +190,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       print("didSelectRowAt")
         performSegue(withIdentifier: Constant.kToListHistory, sender: nil)
     }
     

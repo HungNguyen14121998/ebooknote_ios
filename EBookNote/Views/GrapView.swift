@@ -13,8 +13,8 @@ class GrapView: UIView
     private var path = UIBezierPath()
     
     let kPointCircle = "pointCircle"
-    let kDashShape = "dashShape"
-    let kGoalsShape = "goalsShape"
+    let kDashShape   = "dashShape"
+    let kGoalsShape  = "goalsShape"
     
     fileprivate var gridWidthMultiple: CGFloat // date
     {
@@ -296,7 +296,7 @@ class GrapView: UIView
     
     func addLineGoals() {
         removeGoalsShape()
-        let dataStore = DataStoreManager(key: kUserDefaultGoals)
+        let dataStore = DataStoreManager(key: UserDefaultsKey.kGoalsOfWeek)
         if let pagesGoals = dataStore.getValue() as? Int, pagesGoals > 0 {
             let averagePages = pagesGoals / 7
             let pointY = Double(220 - ((averagePages * 220) / 110))
